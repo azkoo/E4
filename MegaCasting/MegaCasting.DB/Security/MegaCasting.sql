@@ -1,4 +1,7 @@
-﻿CREATE USER [MegaCasting] FOR LOGIN [MegaCasting];
+﻿CREATE USER [MegaCasting] WITHOUT LOGIN
+    WITH DEFAULT_SCHEMA = [db_owner];
+
+
 
 /*CREATE LOGIN [MegaCasting] WITH PASSWORD = '?-M_63-M_?'
 GO
