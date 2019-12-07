@@ -1,0 +1,171 @@
+﻿<UserControl x:Class="MegaCastingWPF.Views.ViewOffer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MegaCastingWPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             
+                                               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"  >
+
+    <Grid Background="#1f2454">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="textBlockOffers"  Grid.Column="0" Grid.Row="0" Text="Annonces" TextAlignment="Center" FontSize="20" Foreground="WhiteSmoke"></TextBlock>
+        <ListBox x:Name="listBoxOffers" Grid.Row="2" Grid.Column="0" Grid.RowSpan="4" Foreground="WhiteSmoke"/>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <ComboBox>
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" VerticalAlignment="Bottom" Content="Type de contrat :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="1" VerticalAlignment="Bottom" Content="Domaine :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="2" VerticalAlignment="Bottom" Content="Metier :" Foreground="WhiteSmoke"></Label>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ComboBox Grid.Column="0">
+            </ComboBox>
+            <ComboBox Grid.Column="1">
+            </ComboBox>
+            <ComboBox Grid.Column="2">
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Nom :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="Référence :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="Date déb publication :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Durée :" Foreground="WhiteSmoke"></Label>
+            <TextBox Grid.Column="1" Grid.Row="0" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Foreground="WhiteSmoke"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Date deb contrat :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="Nb :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Content="Date deb contrat :" Foreground="WhiteSmoke"></Label>
+            <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="Profil :" Foreground="WhiteSmoke"></Label>
+            <TextBox Grid.Column="1" Grid.Row="0" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="Téléphone" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="2" Grid.Row="2" Text="Mail" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="3" Grid.Row="0" Foreground="WhiteSmoke"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Localisation :" Foreground="WhiteSmoke"></Label>
+            <TextBox Grid.Column="1" VerticalAlignment="Top"  Text="Num Rue" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="2" VerticalAlignment="Top" Text="Rue" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="3" VerticalAlignment="Top" Text="CP" Foreground="WhiteSmoke"/>
+            <TextBox Grid.Column="4" VerticalAlignment="Top" Text="Ville" Foreground="WhiteSmoke"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="buttonSave"
+                    Foreground="White"     
+                    Margin="5,5,5,5"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                   Background="#5b63b5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="ContentSave" Grid.Column="0" Foreground="Gainsboro"/>
+                    <Label Grid.Column="1" Content="Sauvegarder" Foreground="Black"/>
+                </Grid>
+            </Button>
+            <Button x:Name="buttonDelete"
+                    Foreground="White"
+                    Margin="5,5,5,5"
+                    Grid.Column="1"
+                    Background="#5b63b5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="Delete" Grid.Column="0" Foreground="Gainsboro"/>
+                    <Label Grid.Column="1" Content="Supprimer" Foreground="Black"/>
+                </Grid>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="6">
+            <Button x:Name="buttonAjouter"
+                    Foreground="White"
+                    Margin="5,5,5,5"
+                    Grid.Column="1"
+                    Background="#5b63b5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Kind="Add" Grid.Column="0" Foreground="Gainsboro"/>
+                    <Label Grid.Column="1" Content="Ajouter" Foreground="Black"/>
+                </Grid>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

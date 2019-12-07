@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b060490b9a014caca9f58a7505a552a7" Name="Diagram1">
+        <EntityTypeShape EntityType="MegaCastingModel.sysdiagram" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MegaCastingModel.CastingPack" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="MegaCastingModel.ContractType" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="MegaCastingModel.Job" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="MegaCastingModel.JobType" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="MegaCastingModel.Offer" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="MegaCastingModel.Producer" Width="1.5" PointX="3" PointY="1.5" />
+        <AssociationConnector Association="MegaCastingModel.FK_Producer_CastingPack" />
+        <AssociationConnector Association="MegaCastingModel.FK_Offer_ContractType" />
+        <AssociationConnector Association="MegaCastingModel.FK_Job_JobType" />
+        <AssociationConnector Association="MegaCastingModel.FK_Offer_Job" />
+        <AssociationConnector Association="MegaCastingModel.FK_Offer_Producer" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
