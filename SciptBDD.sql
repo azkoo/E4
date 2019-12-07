@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [MegaCastingBD]    Script Date: 06/12/2019 22:24:13 ******/
+/****** Object:  Database [MegaCastingBD]    Script Date: 07/12/2019 17:48:29 ******/
 CREATE DATABASE [MegaCastingBD]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -77,7 +77,12 @@ ALTER DATABASE [MegaCastingBD] SET QUERY_STORE = OFF
 GO
 USE [MegaCastingBD]
 GO
-/****** Object:  Table [dbo].[CastingPack]    Script Date: 06/12/2019 22:24:13 ******/
+/****** Object:  User [MegaCasting]    Script Date: 07/12/2019 17:48:29 ******/
+CREATE USER [MegaCasting] WITHOUT LOGIN WITH DEFAULT_SCHEMA=[db_owner]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [MegaCasting]
+GO
+/****** Object:  Table [dbo].[CastingPack]    Script Date: 07/12/2019 17:48:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,7 +97,7 @@ CREATE TABLE [dbo].[CastingPack](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ContractType]    Script Date: 06/12/2019 22:24:13 ******/
+/****** Object:  Table [dbo].[ContractType]    Script Date: 07/12/2019 17:48:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,7 +111,7 @@ CREATE TABLE [dbo].[ContractType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Job]    Script Date: 06/12/2019 22:24:13 ******/
+/****** Object:  Table [dbo].[Job]    Script Date: 07/12/2019 17:48:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +126,7 @@ CREATE TABLE [dbo].[Job](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[JobType]    Script Date: 06/12/2019 22:24:13 ******/
+/****** Object:  Table [dbo].[JobType]    Script Date: 07/12/2019 17:48:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -135,7 +140,7 @@ CREATE TABLE [dbo].[JobType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Offer]    Script Date: 06/12/2019 22:24:13 ******/
+/****** Object:  Table [dbo].[Offer]    Script Date: 07/12/2019 17:48:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -160,13 +165,14 @@ CREATE TABLE [dbo].[Offer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Producer]    Script Date: 06/12/2019 22:24:13 ******/
+/****** Object:  Table [dbo].[Producer]    Script Date: 07/12/2019 17:48:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Producer](
 	[Id] [bigint] NOT NULL,
+	[Name] [varchar](500) NOT NULL,
 	[Website] [varchar](500) NULL,
 	[Phone] [varchar](500) NULL,
 	[Fax] [varchar](500) NOT NULL,
@@ -174,7 +180,8 @@ CREATE TABLE [dbo].[Producer](
 	[Address1] [varchar](500) NULL,
 	[Address2] [varchar](500) NOT NULL,
 	[Email] [varchar](500) NULL,
-	[IdentifierCasringPack] [bigint] NOT NULL,
+	[CastingCounter] [int] NOT NULL,
+	[IdCastingPack] [bigint] NOT NULL,
  CONSTRAINT [PK_Producer] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -201,7 +208,7 @@ REFERENCES [dbo].[Producer] ([Id])
 GO
 ALTER TABLE [dbo].[Offer] CHECK CONSTRAINT [FK_Offer_Producer]
 GO
-ALTER TABLE [dbo].[Producer]  WITH CHECK ADD  CONSTRAINT [FK_Producer_CastingPack] FOREIGN KEY([IdentifierCasringPack])
+ALTER TABLE [dbo].[Producer]  WITH CHECK ADD  CONSTRAINT [FK_Producer_CastingPack] FOREIGN KEY([IdCastingPack])
 REFERENCES [dbo].[CastingPack] ([Id])
 GO
 ALTER TABLE [dbo].[Producer] CHECK CONSTRAINT [FK_Producer_CastingPack]
