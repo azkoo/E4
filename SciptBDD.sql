@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [MegaCastingBD]    Script Date: 07/12/2019 19:11:36 ******/
+/****** Object:  Database [MegaCastingBD]    Script Date: 08/12/2019 17:09:52 ******/
 CREATE DATABASE [MegaCastingBD]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -77,13 +77,13 @@ ALTER DATABASE [MegaCastingBD] SET QUERY_STORE = OFF
 GO
 USE [MegaCastingBD]
 GO
-/****** Object:  Table [dbo].[CastingPack]    Script Date: 07/12/2019 19:11:36 ******/
+/****** Object:  Table [dbo].[CastingPack]    Script Date: 08/12/2019 17:09:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[CastingPack](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](500) NOT NULL,
 	[Size] [int] NULL,
  CONSTRAINT [PK_CastingPack] PRIMARY KEY CLUSTERED 
@@ -92,13 +92,13 @@ CREATE TABLE [dbo].[CastingPack](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ContractType]    Script Date: 07/12/2019 19:11:36 ******/
+/****** Object:  Table [dbo].[ContractType]    Script Date: 08/12/2019 17:09:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[ContractType](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](500) NOT NULL,
  CONSTRAINT [PK_ContractType] PRIMARY KEY CLUSTERED 
 (
@@ -106,13 +106,13 @@ CREATE TABLE [dbo].[ContractType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Job]    Script Date: 07/12/2019 19:11:36 ******/
+/****** Object:  Table [dbo].[Job]    Script Date: 08/12/2019 17:09:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Job](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](500) NOT NULL,
 	[IdJobType] [bigint] NOT NULL,
  CONSTRAINT [PK_Job] PRIMARY KEY CLUSTERED 
@@ -121,13 +121,13 @@ CREATE TABLE [dbo].[Job](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[JobType]    Script Date: 07/12/2019 19:11:36 ******/
+/****** Object:  Table [dbo].[JobType]    Script Date: 08/12/2019 17:09:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[JobType](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](500) NOT NULL,
  CONSTRAINT [PK_JobType] PRIMARY KEY CLUSTERED 
 (
@@ -135,13 +135,13 @@ CREATE TABLE [dbo].[JobType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Offer]    Script Date: 07/12/2019 19:11:36 ******/
+/****** Object:  Table [dbo].[Offer]    Script Date: 08/12/2019 17:09:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Offer](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](500) NOT NULL,
 	[Reference] [varchar](500) NULL,
 	[Description] [varchar](2000) NOT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE [dbo].[Offer](
 	[PostNumber] [int] NULL,
 	[PublicationStart] [datetime] NULL,
 	[ContractStart] [datetime] NULL,
-	[Period] [datetime] NULL,
+	[Period] [varchar](500) NULL,
 	[Inspect] [bit] NOT NULL,
 	[IdProducer] [bigint] NOT NULL,
 	[IdContractType] [bigint] NOT NULL,
@@ -160,20 +160,20 @@ CREATE TABLE [dbo].[Offer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Producer]    Script Date: 07/12/2019 19:11:36 ******/
+/****** Object:  Table [dbo].[Producer]    Script Date: 08/12/2019 17:09:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Producer](
-	[Id] [bigint] NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](500) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
 	[Website] [varchar](500) NULL,
 	[Phone] [varchar](500) NULL,
 	[Fax] [varchar](500) NULL,
 	[City] [varchar](500) NULL,
-	[Address1] [varchar](500) NOT NULL,
+	[Address1] [varchar](500) NULL,
 	[Address2] [varchar](500) NULL,
 	[Email] [varchar](500) NOT NULL,
 	[CastingCounter] [int] NULL,
