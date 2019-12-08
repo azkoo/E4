@@ -22,6 +22,7 @@ namespace MegaCasting.DBLib
     
         public long Id { get; set; }
         public string Name { get; set; }
+        public string Password { get; set; }
         public string Website { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
@@ -29,7 +30,8 @@ namespace MegaCasting.DBLib
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Email { get; set; }
-        public long IdentifierCasringPack { get; set; }
+        public Nullable<int> CastingCounter { get; set; }
+        public long IdCastingPack { get; set; }
     
         public virtual CastingPack CastingPack { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

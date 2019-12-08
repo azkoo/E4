@@ -73,11 +73,16 @@
     </ApplicationDefinition>
     <Compile Include="Converter\ObjectToVisibilityConverter.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelCastingPack.cs" />
     <Compile Include="ViewModels\ViewModelContractType.cs" />
-    <Compile Include="ViewModels\ViewModelsJob.cs" />
+    <Compile Include="ViewModels\ViewModelJob.cs" />
+    <Compile Include="ViewModels\ViewModelOffer.cs" />
     <Compile Include="ViewModels\ViewModelViewAnnouncer.cs" />
     <Compile Include="Views\ViewAnnouncer.xaml.cs">
       <DependentUpon>ViewAnnouncer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewCastingPack.xaml.cs">
+      <DependentUpon>ViewCastingPack.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewContractType.xaml.cs">
       <DependentUpon>ViewContractType.xaml</DependentUpon>
@@ -104,6 +109,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ViewAnnouncer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewCastingPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

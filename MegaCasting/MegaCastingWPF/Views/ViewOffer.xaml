@@ -6,166 +6,176 @@
              xmlns:local="clr-namespace:MegaCastingWPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             
-                                               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                                  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"  >
+        FontFamily="{DynamicResource MaterialDesignFont}" >
 
     <Grid Background="#1f2454">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlockOffers"  Grid.Column="0" Grid.Row="0" Text="Annonces" TextAlignment="Center" FontSize="20" Foreground="WhiteSmoke"></TextBlock>
-        <ListBox x:Name="listBoxOffers" Grid.Row="2" Grid.Column="0" Grid.RowSpan="4" Foreground="WhiteSmoke"/>
-        <Grid Grid.Column="0" Grid.Row="1">
-            <ComboBox>
-            </ComboBox>
-        </Grid>
-        <Grid Grid.Column="1" Grid.Row="1">
+        <TextBlock x:Name="textBlockOffers"  Grid.Column="0" Grid.Row="0" Text="Liste des offres" TextAlignment="Center" FontSize="20" Foreground="WhiteSmoke" HorizontalAlignment="Left"></TextBlock>
+        <ListBox x:Name="listBoxOffers" Grid.Row="1" Grid.Column="0"  Foreground="WhiteSmoke" ItemsSource="{Binding Offers, UpdateSourceTrigger=PropertyChanged}"
+                 DisplayMemberPath="Name" SelectedItem="{Binding SelectedOffer, UpdateSourceTrigger=PropertyChanged}">
+
+        </ListBox>
+
+
+
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" VerticalAlignment="Bottom" Content="Type de contrat :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="1" VerticalAlignment="Bottom" Content="Domaine :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="2" VerticalAlignment="Bottom" Content="Metier :" Foreground="WhiteSmoke"></Label>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Nom :" Foreground="WhiteSmoke" VerticalAlignment="Center" />
+            <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Content="Référence :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Content="Description :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Content="Image :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Content="Nombre de poste(s) :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="6" HorizontalAlignment="Right" Content="Début du contrat :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Content="Durée :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="8" HorizontalAlignment="Right" Content="Type de contrat :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Content="Métier :" Foreground="WhiteSmoke" VerticalAlignment="Top"/>
+            <Label Grid.Column="1" Grid.Row="10" HorizontalAlignment="Right" Content="Annonceur :" Foreground="WhiteSmoke" VerticalAlignment="Top"/>
+
+            <TextBox x:Name="NameOffer" Grid.Column="2" Grid.Row="1" Text="{Binding SelectedOffer.Name, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"  />
+            <TextBox x:Name="ReferenceOffer" Grid.Column="2" Grid.Row="2" Text="{Binding SelectedOffer.Reference, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="DescriptionOffer" Grid.Column="2" Grid.Row="3" Text="{Binding SelectedOffer.Description, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="PostNumberOffer" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedOffer.PostNumber, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+
+            <DatePicker x:Name="DatePickerContractStart" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,6" Width="300"/>
+            <TextBox x:Name="PeriodOffer" Grid.Column="2" Grid.Row="7" Text="{Binding SelectedOffer.Period, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <ComboBox x:Name="ComboBoxContractType" Grid.Column="2" Grid.Row="8" Foreground="WhiteSmoke" VerticalAlignment="Top">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+            <ComboBox x:Name="ComboBoxJob" Grid.Column="2" Grid.Row="9" Foreground="WhiteSmoke" VerticalAlignment="Top">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+            <ComboBox x:Name="ComboBoxAnnouncer" Grid.Column="2" Grid.Row="10" Foreground="WhiteSmoke" VerticalAlignment="Top">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+            
+
+
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <ComboBox Grid.Column="0">
-            </ComboBox>
-            <ComboBox Grid.Column="1">
-            </ComboBox>
-            <ComboBox Grid.Column="2">
-            </ComboBox>
-        </Grid>
-        <Grid Grid.Column="1" Grid.Row="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Nom :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="Référence :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="Date déb publication :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Durée :" Foreground="WhiteSmoke"></Label>
-            <TextBox Grid.Column="1" Grid.Row="0" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Foreground="WhiteSmoke"/>
-        </Grid>
-        <Grid Grid.Column="1" Grid.Row="4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Date deb contrat :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="Nb :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Content="Date deb contrat :" Foreground="WhiteSmoke"></Label>
-            <Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="Profil :" Foreground="WhiteSmoke"></Label>
-            <TextBox Grid.Column="1" Grid.Row="0" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Text="Téléphone" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="2" Grid.Row="2" Text="Mail" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="3" Grid.Row="0" Foreground="WhiteSmoke"/>
-        </Grid>
-        <Grid Grid.Column="1" Grid.Row="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Localisation :" Foreground="WhiteSmoke"></Label>
-            <TextBox Grid.Column="1" VerticalAlignment="Top"  Text="Num Rue" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="2" VerticalAlignment="Top" Text="Rue" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="3" VerticalAlignment="Top" Text="CP" Foreground="WhiteSmoke"/>
-            <TextBox Grid.Column="4" VerticalAlignment="Top" Text="Ville" Foreground="WhiteSmoke"/>
-        </Grid>
-        <Grid Grid.Column="1" Grid.Row="6">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="buttonSave"
-                    Foreground="White"     
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="buttonSaveOffer"
+                    Foreground="White"
+                    Background="#5b63b5"
                     Margin="5,5,5,5"
                     Grid.Row="2"
                     Grid.Column="0"
-                   Background="#5b63b5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="ContentSave" Grid.Column="0" Foreground="Gainsboro"/>
-                    <Label Grid.Column="1" Content="Sauvegarder" Foreground="Black"/>
-                </Grid>
-            </Button>
-            <Button x:Name="buttonDelete"
-                    Foreground="White"
-                    Margin="5,5,5,5"
-                    Grid.Column="1"
-                    Background="#5b63b5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Delete" Grid.Column="0" Foreground="Gainsboro"/>
-                    <Label Grid.Column="1" Content="Supprimer" Foreground="Black"/>
-                </Grid>
-            </Button>
+                    Click ="ButtonSaveOffer_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <materialDesign:PackIcon Kind="ContentSave" Grid.Column="0" Foreground="Gainsboro"/>
+                        <Label Grid.Column="1" Content="Sauvegarder" Foreground="WhiteSmoke"/>
+                    </Grid>
+
+                </Button>
+                <Button x:Name="buttonDeleteOffer"
+                        Foreground="White"
+                        Margin="5,5,5,5"
+                        Background="#5b63b5"
+                        Grid.Column="1"
+                    Click="ButtonDeleteOffer_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <materialDesign:PackIcon Kind="Delete" Grid.Column="0" Foreground="Gainsboro"/>
+                        <Label Grid.Column="1" Content="Supprimer" Foreground="WhiteSmoke"/>
+                    </Grid>
+
+                </Button>
+                <Button x:Name="buttonAddOffer"
+                        Foreground="White"
+                        Margin="5,5,5,5"
+                        Grid.Column="2"
+                    Background="#5b63b5"
+                    Click="ButtonAddOffer_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <materialDesign:PackIcon Kind="Add" Grid.Column="0" Foreground="Gainsboro"/>
+                        <Label Grid.Column="1" Content="Ajouter" Foreground="WhiteSmoke"/>
+                    </Grid>
+
+                </Button>
+            </Grid>
+
         </Grid>
-        <Grid Grid.Column="0" Grid.Row="6">
-            <Button x:Name="buttonAjouter"
-                    Foreground="White"
-                    Margin="5,5,5,5"
-                    Grid.Column="1"
-                    Background="#5b63b5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Kind="Add" Grid.Column="0" Foreground="Gainsboro"/>
-                    <Label Grid.Column="1" Content="Ajouter" Foreground="Black"/>
-                </Grid>
-            </Button>
-        </Grid>
+
     </Grid>
 </UserControl>

@@ -20,7 +20,7 @@ namespace MegaCasting.DBLib
         public string Description { get; set; }
         public byte[] Picture { get; set; }
         public Nullable<int> PostNumber { get; set; }
-        public System.DateTime PublicationStart { get; set; }
+        public Nullable<System.DateTime> PublicationStart { get; set; }
         public Nullable<System.DateTime> ContractStart { get; set; }
         public Nullable<System.DateTime> Period { get; set; }
         public bool Inspect { get; set; }

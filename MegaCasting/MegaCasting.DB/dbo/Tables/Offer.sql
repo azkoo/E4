@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[Offer] (
-    [Id]               BIGINT         NOT NULL,
+    [Id]               BIGINT         IDENTITY (1, 1) NOT NULL,
     [Name]             VARCHAR (500)  NOT NULL,
-    [Reference]        VARCHAR (500)  NOT NULL,
+    [Reference]        VARCHAR (500)  NULL,
     [Description]      VARCHAR (2000) NOT NULL,
     [Picture]          IMAGE          NULL,
     [PostNumber]       INT            NULL,
-    [PublicationStart] DATETIME       NOT NULL,
+    [PublicationStart] DATETIME       NULL,
     [ContractStart]    DATETIME       NULL,
     [Period]           DATETIME       NULL,
     [Inspect]          BIT            NOT NULL,
@@ -17,4 +17,8 @@
     CONSTRAINT [FK_Offer_Job] FOREIGN KEY ([IdJob]) REFERENCES [dbo].[Job] ([Id]),
     CONSTRAINT [FK_Offer_Producer] FOREIGN KEY ([IdProducer]) REFERENCES [dbo].[Producer] ([Id])
 );
+
+
+
+
 

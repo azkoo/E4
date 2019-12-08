@@ -68,6 +68,8 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Button x:Name="buttonAnnouncer" Foreground="White" Background="#5b63b5" Click="ButtonAnnouncer_Click" Margin="0,5,0,5" Width="200" Height="100" Grid.Row="1">
                     <Grid>
@@ -107,6 +109,16 @@
                         </Grid.ColumnDefinitions>
                         <materialDesign:PackIcon Kind="Worker" Grid.Column="0" Foreground="Gainsboro"/>
                         <Label Grid.Column="1" Content="Metier" Foreground="Black"/>
+                    </Grid>
+                </Button>
+                <Button x:Name="buttonCastingPack" Foreground="White" Background="#5b63b5" Click="ButtonCastingPack_Click" Margin="0,5,0,5" Width="200" Height="100" Grid.Row="9">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Package" Grid.Column="0" Foreground="Gainsboro"/>
+                        <Label Grid.Column="1" Content="Pack de casting" Foreground="Black"/>
                     </Grid>
                 </Button>
             </Grid>

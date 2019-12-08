@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Size" Type="int" />
         </EntityType>
@@ -17,14 +17,14 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="IdJobType" Type="bigint" Nullable="false" />
         </EntityType>
@@ -32,20 +32,20 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="Offer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Reference" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Reference" Type="varchar" MaxLength="500" />
           <Property Name="Description" Type="varchar" MaxLength="2000" Nullable="false" />
           <Property Name="Picture" Type="image" />
           <Property Name="PostNumber" Type="int" />
-          <Property Name="PublicationStart" Type="datetime" Nullable="false" />
+          <Property Name="PublicationStart" Type="datetime" />
           <Property Name="ContractStart" Type="datetime" />
           <Property Name="Period" Type="datetime" />
           <Property Name="Inspect" Type="bit" Nullable="false" />
@@ -57,16 +57,18 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Website" Type="varchar" MaxLength="500" />
           <Property Name="Phone" Type="varchar" MaxLength="500" />
-          <Property Name="Fax" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Fax" Type="varchar" MaxLength="500" />
           <Property Name="City" Type="varchar" MaxLength="500" />
           <Property Name="Address1" Type="varchar" MaxLength="500" />
-          <Property Name="Address2" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="500" />
-          <Property Name="IdentifierCasringPack" Type="bigint" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CastingCounter" Type="int" />
+          <Property Name="IdCastingPack" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -134,7 +136,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Producer">
-              <PropertyRef Name="IdentifierCasringPack" />
+              <PropertyRef Name="IdCastingPack" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -203,33 +205,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="MegaCastingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MegaCastingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CastingPacks" EntityType="MegaCastingModel.CastingPack" />
-          <EntitySet Name="ContractTypes" EntityType="MegaCastingModel.ContractType" />
-          <EntitySet Name="Jobs" EntityType="MegaCastingModel.Job" />
-          <EntitySet Name="JobTypes" EntityType="MegaCastingModel.JobType" />
-          <EntitySet Name="Offers" EntityType="MegaCastingModel.Offer" />
-          <EntitySet Name="Producers" EntityType="MegaCastingModel.Producer" />
-          <EntitySet Name="sysdiagrams" EntityType="MegaCastingModel.sysdiagram" />
-          <AssociationSet Name="FK_Producer_CastingPack" Association="MegaCastingModel.FK_Producer_CastingPack">
-            <End Role="CastingPack" EntitySet="CastingPacks" />
-            <End Role="Producer" EntitySet="Producers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Offer_ContractType" Association="MegaCastingModel.FK_Offer_ContractType">
-            <End Role="ContractType" EntitySet="ContractTypes" />
-            <End Role="Offer" EntitySet="Offers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Job_JobType" Association="MegaCastingModel.FK_Job_JobType">
-            <End Role="JobType" EntitySet="JobTypes" />
-            <End Role="Job" EntitySet="Jobs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Offer_Job" Association="MegaCastingModel.FK_Offer_Job">
-            <End Role="Job" EntitySet="Jobs" />
-            <End Role="Offer" EntitySet="Offers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Offer_Producer" Association="MegaCastingModel.FK_Offer_Producer">
-            <End Role="Producer" EntitySet="Producers" />
-            <End Role="Offer" EntitySet="Offers" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -260,7 +235,75 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-        </EntityContainer>
+          <EntitySet Name="CastingPacks" EntityType="MegaCastingModel.CastingPack" />
+          <EntitySet Name="ContractTypes" EntityType="MegaCastingModel.ContractType" />
+          <EntitySet Name="Jobs" EntityType="MegaCastingModel.Job" />
+          <EntitySet Name="JobTypes" EntityType="MegaCastingModel.JobType" />
+          <EntitySet Name="Offers" EntityType="MegaCastingModel.Offer" />
+          <EntitySet Name="Producers" EntityType="MegaCastingModel.Producer" />
+          <AssociationSet Name="FK_Producer_CastingPack" Association="MegaCastingModel.FK_Producer_CastingPack">
+            <End Role="CastingPack" EntitySet="CastingPacks" />
+            <End Role="Producer" EntitySet="Producers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_ContractType" Association="MegaCastingModel.FK_Offer_ContractType">
+            <End Role="ContractType" EntitySet="ContractTypes" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_JobType" Association="MegaCastingModel.FK_Job_JobType">
+            <End Role="JobType" EntitySet="JobTypes" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Job" Association="MegaCastingModel.FK_Offer_Job">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offer_Producer" Association="MegaCastingModel.FK_Offer_Producer">
+            <End Role="Producer" EntitySet="Producers" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="MegaCastingModel.sysdiagram" />
+          <FunctionImport Name="sp_alterdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition1" ReturnType="Collection(MegaCastingModel.sp_helpdiagramdefinition1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams1" ReturnType="Collection(MegaCastingModel.sp_helpdiagrams1_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram1">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams1" />
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="CastingPack">
           <Key>
             <PropertyRef Name="Id" />
@@ -302,11 +345,11 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Reference" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Reference" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PostNumber" Type="Int32" />
-          <Property Name="PublicationStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PublicationStart" Type="DateTime" Precision="3" />
           <Property Name="ContractStart" Type="DateTime" Precision="3" />
           <Property Name="Period" Type="DateTime" Precision="3" />
           <Property Name="Inspect" Type="Boolean" Nullable="false" />
@@ -323,26 +366,18 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Fax" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="IdentifierCasringPack" Type="Int64" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CastingCounter" Type="Int32" />
+          <Property Name="IdCastingPack" Type="Int64" Nullable="false" />
           <NavigationProperty Name="CastingPack" Relationship="MegaCastingModel.FK_Producer_CastingPack" FromRole="Producer" ToRole="CastingPack" />
           <NavigationProperty Name="Offers" Relationship="MegaCastingModel.FK_Offer_Producer" FromRole="Producer" ToRole="Offer" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Producer_CastingPack">
           <End Type="MegaCastingModel.CastingPack" Role="CastingPack" Multiplicity="1" />
@@ -352,7 +387,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Producer">
-              <PropertyRef Name="IdentifierCasringPack" />
+              <PropertyRef Name="IdCastingPack" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -404,11 +439,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition1_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
+        <ComplexType Name="sp_helpdiagrams1_Result">
           <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -477,7 +522,8 @@
           <EntitySetMapping Name="Producers">
             <EntityTypeMapping TypeName="MegaCastingModel.Producer">
               <MappingFragment StoreEntitySet="Producer">
-                <ScalarProperty Name="IdentifierCasringPack" ColumnName="IdentifierCasringPack" />
+                <ScalarProperty Name="IdCastingPack" ColumnName="IdCastingPack" />
+                <ScalarProperty Name="CastingCounter" ColumnName="CastingCounter" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Address2" ColumnName="Address2" />
                 <ScalarProperty Name="Address1" ColumnName="Address1" />
@@ -485,6 +531,7 @@
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -501,20 +548,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MegaCastingModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MegaCastingModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MegaCastingModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MegaCastingModel.Store.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="MegaCastingModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="MegaCastingModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="MegaCastingModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="MegaCastingModel.Store.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="MegaCastingModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="MegaCastingModel.sp_helpdiagramdefinition1_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MegaCastingModel.Store.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="MegaCastingModel.Store.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="MegaCastingModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="MegaCastingModel.sp_helpdiagrams1_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -523,8 +570,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MegaCastingModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MegaCastingModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="MegaCastingModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="MegaCastingModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

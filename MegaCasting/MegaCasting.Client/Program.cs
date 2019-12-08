@@ -102,7 +102,7 @@ namespace MegaCasting.Client
             List<Producer> producers = megaCastingEntities.Producers.ToList();
 
             //Ici, on les affichent
-            producers.ForEach(producer => Console.WriteLine(producer.Identifier + " - " + producer.Name));
+            producers.ForEach(producer => Console.WriteLine(producer.Id + " - " + producer.Name));
 
             //Demande de suppression éventuelle ?
             Console.WriteLine("Si vous souhaitez supprimer un producteur, écrivez son identifiant");
@@ -113,10 +113,10 @@ namespace MegaCasting.Client
             //Passer le choic utilisateur dans un string
             if (int.TryParse(toDeleteString, out isInteger))
             {
-                if (megaCastingEntities.Producers.Any(producer => producer.Identifier == isInteger))
+                if (megaCastingEntities.Producers.Any(producer => producer.Id == isInteger))
                 {
                     //Si il existe on le récupère
-                    Producer producer = megaCastingEntities.Producers.First(producerTemp => producerTemp.Identifier == isInteger);
+                    Producer producer = megaCastingEntities.Producers.First(producerTemp => producerTemp.Id == isInteger);
                     //On le supprime
                     megaCastingEntities.Producers.Remove(producer);
                     // On le sauvegarde
@@ -140,7 +140,7 @@ namespace MegaCasting.Client
             List<Producer> producers = megaCastingEntities.Producers.ToList();
 
             //Ici, on les affichent
-            producers.ForEach(producer => Console.WriteLine(producer.Identifier + " - " + producer.Name));
+            producers.ForEach(producer => Console.WriteLine(producer.Id + " - " + producer.Name));
 
             //Demande de suppression éventuelle ?
             Console.WriteLine("Si vous souhaitez modifier un producteur, écrivez son identifiant");
@@ -150,10 +150,10 @@ namespace MegaCasting.Client
             //Passer le choic utilisateur dans un string
             if (int.TryParse(toDeleteString, out isInteger))
             {
-                if (megaCastingEntities.Producers.Any(producer => producer.Identifier == isInteger))
+                if (megaCastingEntities.Producers.Any(producer => producer.Id == isInteger))
                 {
                     //Si il existe on le récupère
-                    Producer producer = megaCastingEntities.Producers.First(producerTemp => producerTemp.Identifier == isInteger);
+                    Producer producer = megaCastingEntities.Producers.First(producerTemp => producerTemp.Id == isInteger);
                     //On le modifie
                     Console.WriteLine("Nouveau nom : ");
                     string nametoUpdate = Console.ReadLine();

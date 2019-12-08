@@ -1,4 +1,5 @@
-﻿using MegaCastingWPF.ViewModels;
+﻿using MegaCasting.DBLib;
+using MegaCastingWPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace MegaCastingWPF.Views
         #region Event
 
         /// <summary>
-        /// Permet d'ajouter un producteur en BDD
+        /// Permet d'ajouter un annonceur en BDD
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -42,17 +43,17 @@ namespace MegaCastingWPF.Views
             if (result == MessageBoxResult.Yes)
             {
                 // On ajoute le producteur en BDD
-                ((ViewModelViewAnnouncer)this.DataContext).AddProducer(NameProducer);
-                MessageBox.Show("L'utilisateur " + NameProducer.Text + " a bien été ajouté");
+                ((ViewModelViewAnnouncer)this.DataContext).AddProducer(NameProducer, PasswordProducer, EmailProducer, WebsiteProducer, PhoneProducer, FaxProducer, CityProducer, AddressProducer);
+                MessageBox.Show("L'annonceur " + NameProducer.Text + " a bien été ajouté");
             }
             else
             {
-                MessageBox.Show("L'utilisateur " + NameProducer.Text + " n'a pas été ajouté");
+                MessageBox.Show("L'annonceur " + NameProducer.Text + " n'a pas été ajouté");
             }
         }
 
         /// <summary>
-        /// Permet de supprimer un producteur en BDD
+        /// Permet de supprimer un annonceur en BDD
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,24 +67,38 @@ namespace MegaCastingWPF.Views
                 // Si un producteur est sélectionné il est automatiquement supprimé par DeleteProducer
                 if (boolean)
                 {
-                    MessageBox.Show("L'utilisateur a bien été supprimé");
+                    MessageBox.Show("L'annonceur a bien été supprimé");
                 }
             }
             else
             {
-                MessageBox.Show("L'utilisateur n'a pas été supprimé");
+                MessageBox.Show("L'annonceur n'a pas été supprimé");
             }
         }
 
         /// <summary>
-        /// Génère un mot de passe aléatoire pour le producteur
+        /// Permet de sauvegarder un annonceur en BDD
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ButtonPassword_Click(object sender, RoutedEventArgs e)
+        private void ButtonSaveProducteur_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Souhaitez-vous confirmer la sauvegarde", "Confirmation sauvegarde", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                // On sauvegarde les modifications en BDD
+                ((ViewModelViewAnnouncer)this.DataContext).UpdateProducer();
+                MessageBox.Show("L'annonceur " + NameProducer.Text + " a bien été sauvegardé");
+            }
+            else
+            {
+                MessageBox.Show("L'annonceur  " + NameProducer.Text + " n'a pas été sauvegardé");
+            }
         }
 
+
         #endregion
+
+
     }
 }
