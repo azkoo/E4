@@ -1,0 +1,58 @@
+1 Rappel du besoin et des contraintes  -- 
+
+NDC + problèmes rencontrés
+
+
+2 Capacité d’analyse de la situation  -- 
+
+CDC + matrice des risques
+
+3 Description de la solution mise en place  --
+
+Doc tech + user
+
+4 Liste des fonctionnalités développées / Démonstration du résultat / Conclusion (qualité du travail, évolutions à envisager, difficultés rencontrées et moyens mis en œuvre pour les surmonter…) --
+
+
+
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+
+Code
+
+
+MATHEO
+
+Tunning CL
+Cahier Test
+Doc technique CL + IR
+
+MARTIN
+
+NDC + CDC
+(Recette)
+Log
+Documentation utilisateur
+Doc technique site web
+Tunning + terminer HTML + Maquettes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
