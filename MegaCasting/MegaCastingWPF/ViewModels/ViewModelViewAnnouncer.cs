@@ -64,12 +64,21 @@ namespace MegaCastingWPF.ViewModels
         /// Permet l'ajout d'un producteur en BDD
         /// </summary>
         /// <param name="textBox"></param>
-        public void AddProducer(TextBox textBox)
+        public void AddProducer(TextBox NameProducer, TextBox PasswordProducer, TextBox EmailProducer, TextBox WebsiteProducer, TextBox PhoneProducer, TextBox FaxProducer, TextBox CityProducer, TextBox AddressProducer)
         {
+            //, ComboBox SubscribeProducer
             // On crée une nouvelle instance
             Producer producer = new Producer();
             // On attribue le texte contenu dans la textbox
-            producer.Name = textBox.Text;
+            producer.Name = NameProducer.Text;
+            producer.Password = PasswordProducer.Text;
+            producer.Email = EmailProducer.Text;
+            producer.Website = WebsiteProducer.Text;
+            producer.Phone = PhoneProducer.Text;
+            producer.Fax = FaxProducer.Text;
+            producer.City = CityProducer.Text;
+            producer.Address1 = AddressProducer.Text;
+            //producer.IdCastingPack = SubscribeProducer.GetValue(Id);
             this.Entities.Producers.Add(producer);
             // On ajoute le producteur à la BDD
             this.Producers.Add(producer);
@@ -101,6 +110,14 @@ namespace MegaCastingWPF.ViewModels
             return boolean;
         }
 
+        /// <summary>
+        /// Permet de sauvegarder un producteur
+        /// </summary>
+        public void UpdateProducer()
+        {
+            // On sauvegarde les modifications dans la BDD
+            this.Entities.SaveChanges();
+        }
         #endregion
     }
 }

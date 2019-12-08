@@ -23,18 +23,18 @@
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlockAnnouncers"  Grid.Column="0" Grid.Row="0" Text="Liste des annonceurs" TextAlignment="Center" FontSize="20" Foreground="WhiteSmoke"> </TextBlock>
+        <TextBlock x:Name="textBlockAnnouncers"  Grid.Column="0" Grid.Row="0" Text="Liste des annonceurs" TextAlignment="Center" FontSize="20" Foreground="WhiteSmoke" HorizontalAlignment="Left"></TextBlock>
         <ListBox x:Name="listBoxAnnouncers" Grid.Row="1" Grid.Column="0"  Foreground="WhiteSmoke" ItemsSource="{Binding Producers, UpdateSourceTrigger=PropertyChanged}"
                  DisplayMemberPath="Name" SelectedItem="{Binding SelectedProducer, UpdateSourceTrigger=PropertyChanged}">
-            
+
         </ListBox>
-        
 
 
-        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="3">
+
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
@@ -42,37 +42,43 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
+
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Nom :" Foreground="WhiteSmoke" />
-            <Label Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Content="Nb Offres disponible :" Foreground="WhiteSmoke"/>
-            <Label Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Content="Ajouter offres :" Foreground="WhiteSmoke"/>
-            <Label Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Content="Identifiant :" Foreground="WhiteSmoke"/>
-            <Label Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Content="Mot de passe :" Foreground="WhiteSmoke"/>
+            <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Content="Nom :" Foreground="WhiteSmoke" VerticalAlignment="Center" />
+            <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Content="Mot de passe :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Content="Email :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Content="Site web :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Content="Téléphone :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="6" HorizontalAlignment="Right" Content="Fax :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Content="Ville :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="8" HorizontalAlignment="Right" Content="Adresse :" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Content="Abonnement :" Foreground="WhiteSmoke" VerticalAlignment="Top"/>
 
-            <TextBox x:Name="NameProducer" Grid.Column="2" Grid.Row="1" Text="{Binding SelectedProducer.Name, UpdateSourceTrigger=PropertyChanged}"  />
-            <TextBox Grid.Column="2" Grid.Row="3"/>
-            <TextBox Grid.Column="2" Grid.Row="5"/>
-            <TextBox Grid.Column="2" Grid.Row="7"/>
-            <Button x:Name="buttonPassword"
-                    Foreground="White"
-                   Click="ButtonPassword_Click"
-                    Grid.Column="2" Grid.Row="9"
-                    Content="Générer"
-                    Margin="0,5,0,5"
-                    Background="#5b63b5">
-            </Button>
+            <TextBox x:Name="NameProducer" Grid.Column="2" Grid.Row="1" Text="{Binding SelectedProducer.Name, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"  />
+            <TextBox x:Name="PasswordProducer" Grid.Column="2" Grid.Row="2" Text="{Binding SelectedProducer.Password, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="EmailProducer" Grid.Column="2" Grid.Row="3" Text="{Binding SelectedProducer.Email, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="WebsiteProducer" Grid.Column="2" Grid.Row="4" Text="{Binding SelectedProducer.Website, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="PhoneProducer" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedProducer.Phone, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="FaxProducer" Grid.Column="2" Grid.Row="6" Text="{Binding SelectedProducer.Fax, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="CityProducer" Grid.Column="2" Grid.Row="7" Text="{Binding SelectedProducer.City, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <TextBox x:Name="AddressProducer" Grid.Column="2" Grid.Row="8" Text="{Binding SelectedProducer.Address1, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
+            <ComboBox  x:Name="comboboxCastingPack" Grid.Column="2" Grid.Row="9" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Nom" 
+                 ItemsSource="{Binding CastingPacks, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedItem="{Binding SelectedCastingPack, UpdateSourceTrigger=PropertyChanged}"
+                       SelectedValue="{Binding SelectedProducer.CastingPack, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+
 
         </Grid>
         <Grid Grid.Column="1" Grid.Row="2">
@@ -80,12 +86,32 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                <Button x:Name="buttonSaveProducteur"
+                    Foreground="White"
+                    Background="#5b63b5"
+                    Margin="5,5,5,5"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Click ="ButtonSaveProducteur_Click">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <materialDesign:PackIcon Kind="ContentSave" Grid.Column="0" Foreground="Gainsboro"/>
+                        <Label Grid.Column="1" Content="Sauvegarder" Foreground="WhiteSmoke"/>
+                    </Grid>
+
+                </Button>
                 <Button x:Name="buttonDeleteProducteur"
                         Foreground="White"
                         Margin="5,5,5,5"
-                        Grid.Column="0"
-                    Background="#5b63b5"
+                        Background="#5b63b5"
+                        Grid.Column="1"
                     Click="ButtonDeleteProducteur_Click">
 
                     <Grid>
@@ -102,7 +128,7 @@
                 <Button x:Name="buttonAddProducteur"
                         Foreground="White"
                         Margin="5,5,5,5"
-                        Grid.Column="1"
+                        Grid.Column="2"
                     Background="#5b63b5"
                     Click="ButtonAddProducteur_Click">
 

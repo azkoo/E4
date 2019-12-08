@@ -93,7 +93,21 @@ namespace MegaCastingWPF
         /// <param name="e"></param>
         private void ButtonJob_Click(object sender, RoutedEventArgs e)
         {
+            this.CleanPanel();
+            ViewJob viewJob = new ViewJob();
+            this.dockPanelMain.Children.Add(viewJob);
+        }
 
+        /// <summary>
+        /// Action d'ouverture du panel pack de casting
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonCastingPack_Click(object sender, RoutedEventArgs e)
+        {
+            this.CleanPanel();
+            ViewCastingPack viewCastingPack = new ViewCastingPack();
+            this.dockPanelMain.Children.Add(viewCastingPack);
         }
 
         #endregion
@@ -109,5 +123,7 @@ namespace MegaCastingWPF
         }
 
         #endregion
+
+ 
     }
 }

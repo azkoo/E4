@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b060490b9a014caca9f58a7505a552a7" Name="Diagram1">
-        <EntityTypeShape EntityType="MegaCastingModel.CastingPack" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="MegaCastingModel.CastingPack" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="MegaCastingModel.ContractType" Width="1.5" PointX="3" PointY="5.375" />
         <EntityTypeShape EntityType="MegaCastingModel.Job" Width="1.5" PointX="3" PointY="2.125" />
         <EntityTypeShape EntityType="MegaCastingModel.JobType" Width="1.5" PointX="0.75" PointY="2.25" />
@@ -16,6 +16,7 @@
         <AssociationConnector Association="MegaCastingModel.FK_Job_JobType" />
         <AssociationConnector Association="MegaCastingModel.FK_Offer_Job" />
         <AssociationConnector Association="MegaCastingModel.FK_Offer_Producer" />
+        <EntityTypeShape EntityType="MegaCastingModel.sysdiagram" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
