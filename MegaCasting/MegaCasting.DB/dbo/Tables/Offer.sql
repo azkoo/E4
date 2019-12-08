@@ -7,7 +7,7 @@
     [PostNumber]       INT            NULL,
     [PublicationStart] DATETIME       NULL,
     [ContractStart]    DATETIME       NULL,
-    [Period]           DATETIME       NULL,
+    [Period]           VARCHAR (500)  NULL,
     [Inspect]          BIT            NOT NULL,
     [IdProducer]       BIGINT         NOT NULL,
     [IdContractType]   BIGINT         NOT NULL,
@@ -17,6 +17,8 @@
     CONSTRAINT [FK_Offer_Job] FOREIGN KEY ([IdJob]) REFERENCES [dbo].[Job] ([Id]),
     CONSTRAINT [FK_Offer_Producer] FOREIGN KEY ([IdProducer]) REFERENCES [dbo].[Producer] ([Id])
 );
+
+
 
 
 
