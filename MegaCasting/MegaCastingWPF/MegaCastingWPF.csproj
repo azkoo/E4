@@ -175,6 +175,12 @@
   <ItemGroup>
     <Resource Include="coollogo_com-108131315.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logotrens.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MegaCastingLogoMiniature.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

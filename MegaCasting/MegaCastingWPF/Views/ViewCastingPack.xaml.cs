@@ -95,7 +95,5 @@ namespace MegaCastingWPF.Views
         }
 
         #endregion
-
-
     }
 }

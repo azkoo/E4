@@ -21,26 +21,28 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"   
+        FontFamily="{DynamicResource MaterialDesignFont}" Icon="Logotrens.png" Cursor="Arrow"   
         >
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions >
             <ColumnDefinition Width="200"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="285*"></ColumnDefinition>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="71*"/>
         </Grid.ColumnDefinitions>
 
         <!--Entête-->
-        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#565975">
+        <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="#565975">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Background="{x:Null}">
                 <!--Bouton home-->
-                <Button x:Name="buttonHome" Click="ButtonHome_Click" Foreground="White" BorderBrush="Transparent" Width="200" Background="{x:Null}">
-                    <Image Height="35" Source="coollogo_com-108151449.png" Stretch="Fill" Width="129"/>
+                <Button x:Name="buttonHome" Click="ButtonHome_Click" Foreground="White" BorderBrush="Transparent" Height="60" Width="200" Background="{x:Null}">
+                    <Image Height="50" Source="MegaCastingLogoMiniature.png" Stretch="Fill" Width="50"/>
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Background="{x:Null}">
@@ -78,7 +80,7 @@
                             <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
                         <materialDesign:PackIcon Kind="AnnouncementOutline" Grid.Column="0" Foreground="Gainsboro"/>
-                        <Label Grid.Column="1" Content="Annonceurs" Foreground="Black"/>
+                        <Label Grid.Column="1" Content="Annonceur" Foreground="Black"/>
                     </Grid>
                 </Button>
                 <Button x:Name="buttonOffer" Foreground="White" Background="#5b63b5" Click="ButtonOffer_Click" Margin="0,5,0,5" Grid.Row="3" Width="200" Height="100">
@@ -134,7 +136,7 @@
             <MenuItem x:Name="menuItemContractType" Header="Gestion des annonceurs" />
         </Menu>-->
         <!-- Entête-->
-        <DockPanel x:Name="dockPanelMain" Grid.Row="1" Grid.Column="1" Background="#1f2454">
+        <DockPanel x:Name="dockPanelMain" Grid.Row="1" Grid.Column="1" Background="#1f2454" Grid.ColumnSpan="3">
             <views:ViewMain HorizontalAlignment="Center" />
         </DockPanel>
     </Grid>

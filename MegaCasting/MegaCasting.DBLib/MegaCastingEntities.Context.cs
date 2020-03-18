@@ -33,6 +33,7 @@ namespace MegaCasting.DBLib
         public virtual DbSet<JobType> JobTypes { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<Producer> Producers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

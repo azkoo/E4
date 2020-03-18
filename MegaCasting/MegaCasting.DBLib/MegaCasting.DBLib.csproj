@@ -101,6 +101,9 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>MegaCastingEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>MegaCastingEntities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
