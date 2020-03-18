@@ -18,9 +18,3 @@
     CONSTRAINT [FK_Offer_Producer] FOREIGN KEY ([IdProducer]) REFERENCES [dbo].[Producer] ([Id])
 );
 
-
-
-
-
-
-

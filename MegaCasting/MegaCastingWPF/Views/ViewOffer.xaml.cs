@@ -41,7 +41,7 @@ namespace MegaCastingWPF.Views
             if (result == MessageBoxResult.Yes)
             {
                 // On ajoute l'offre en BDD
-                ((ViewModelOffer)this.DataContext).AddOffer( NameOffer, ReferenceOffer, DescriptionOffer, PeriodOffer);
+                ((ViewModelOffer)this.DataContext).AddOffer(NameOffer, ReferenceOffer, DescriptionOffer, PeriodOffer);
                 MessageBox.Show("L'offre " + NameOffer.Text + " a bien été ajouté");
             }
             else
@@ -95,6 +95,5 @@ namespace MegaCastingWPF.Views
         }
 
         #endregion
-
     }
 }

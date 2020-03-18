@@ -24,6 +24,8 @@ namespace MegaCastingWPF.Views
         public ViewJob()
         {
             InitializeComponent();
+
+            this.DataContext = new ViewModelJob();
         }
 
         #region Event
@@ -91,8 +93,6 @@ namespace MegaCastingWPF.Views
                 MessageBox.Show("Le métier  " + JobName.Text + " n'a pas été sauvegardé");
             }
         }
-
         #endregion
-
     }
 }

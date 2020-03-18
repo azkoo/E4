@@ -15,7 +15,7 @@ namespace MegaCastingWPF.ViewModels
         #region Attribute
 
         /// <summary>
-        /// Liste observable des types de contrats
+        /// Liste observable des types de contrat
         /// </summary>
         private ObservableCollection<ContractType> _ContractTypes;
 

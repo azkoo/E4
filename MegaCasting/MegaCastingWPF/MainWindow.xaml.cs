@@ -123,7 +123,5 @@ namespace MegaCastingWPF
         }
 
         #endregion
-
- 
     }
 }

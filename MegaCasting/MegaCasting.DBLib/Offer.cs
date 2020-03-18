@@ -22,7 +22,7 @@ namespace MegaCasting.DBLib
         public Nullable<int> PostNumber { get; set; }
         public Nullable<System.DateTime> PublicationStart { get; set; }
         public Nullable<System.DateTime> ContractStart { get; set; }
-        public Nullable<System.DateTime> Period { get; set; }
+        public string Period { get; set; }
         public bool Inspect { get; set; }
         public long IdProducer { get; set; }
         public long IdContractType { get; set; }

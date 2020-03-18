@@ -1,5 +1,4 @@
-﻿using MegaCasting.DBLib;
-using MegaCastingWPF.ViewModels;
+﻿using MegaCastingWPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +32,7 @@ namespace MegaCastingWPF.Views
         #region Event
 
         /// <summary>
-        /// Permet d'ajouter un annonceur en BDD
+        /// Permet d'ajouter un producteur en BDD
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -44,16 +43,16 @@ namespace MegaCastingWPF.Views
             {
                 // On ajoute le producteur en BDD
                 ((ViewModelViewAnnouncer)this.DataContext).AddProducer(NameProducer, PasswordProducer, EmailProducer, WebsiteProducer, PhoneProducer, FaxProducer, CityProducer, AddressProducer);
-                MessageBox.Show("L'annonceur " + NameProducer.Text + " a bien été ajouté");
+                MessageBox.Show("L'utilisateur " + NameProducer.Text + " a bien été ajouté");
             }
             else
             {
-                MessageBox.Show("L'annonceur " + NameProducer.Text + " n'a pas été ajouté");
+                MessageBox.Show("L'utilisateur " + NameProducer.Text + " n'a pas été ajouté");
             }
         }
 
         /// <summary>
-        /// Permet de supprimer un annonceur en BDD
+        /// Permet de supprimer un producteur en BDD
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -67,12 +66,12 @@ namespace MegaCastingWPF.Views
                 // Si un producteur est sélectionné il est automatiquement supprimé par DeleteProducer
                 if (boolean)
                 {
-                    MessageBox.Show("L'annonceur a bien été supprimé");
+                    MessageBox.Show("L'utilisateur a bien été supprimé");
                 }
             }
             else
             {
-                MessageBox.Show("L'annonceur n'a pas été supprimé");
+                MessageBox.Show("L'utilisateur n'a pas été supprimé");
             }
         }
 
@@ -96,9 +95,15 @@ namespace MegaCastingWPF.Views
             }
         }
 
+        /// <summary>
+        /// Génère un mot de passe aléatoire pour le producteur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonPassword_Click(object sender, RoutedEventArgs e)
+        {
+        }
 
         #endregion
-
-
     }
 }

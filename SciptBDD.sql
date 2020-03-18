@@ -1,6 +1,10 @@
 USE [master]
 GO
+<<<<<<< HEAD
 /****** Object:  Database [MegaCastingBD]    Script Date: 08/12/2019 17:09:52 ******/
+=======
+/****** Object:  Database [MegaCastingBD]    Script Date: 07/12/2019 18:05:41 ******/
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 CREATE DATABASE [MegaCastingBD]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -77,7 +81,16 @@ ALTER DATABASE [MegaCastingBD] SET QUERY_STORE = OFF
 GO
 USE [MegaCastingBD]
 GO
+<<<<<<< HEAD
 /****** Object:  Table [dbo].[CastingPack]    Script Date: 08/12/2019 17:09:52 ******/
+=======
+/****** Object:  User [MegaCasting]    Script Date: 07/12/2019 18:05:41 ******/
+CREATE USER [MegaCasting] WITHOUT LOGIN WITH DEFAULT_SCHEMA=[db_owner]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [MegaCasting]
+GO
+/****** Object:  Table [dbo].[CastingPack]    Script Date: 07/12/2019 18:05:41 ******/
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,7 +105,11 @@ CREATE TABLE [dbo].[CastingPack](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+<<<<<<< HEAD
 /****** Object:  Table [dbo].[ContractType]    Script Date: 08/12/2019 17:09:52 ******/
+=======
+/****** Object:  Table [dbo].[ContractType]    Script Date: 07/12/2019 18:05:41 ******/
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,7 +123,11 @@ CREATE TABLE [dbo].[ContractType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+<<<<<<< HEAD
 /****** Object:  Table [dbo].[Job]    Script Date: 08/12/2019 17:09:52 ******/
+=======
+/****** Object:  Table [dbo].[Job]    Script Date: 07/12/2019 18:05:41 ******/
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +142,11 @@ CREATE TABLE [dbo].[Job](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+<<<<<<< HEAD
 /****** Object:  Table [dbo].[JobType]    Script Date: 08/12/2019 17:09:52 ******/
+=======
+/****** Object:  Table [dbo].[JobType]    Script Date: 07/12/2019 18:05:41 ******/
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -135,7 +160,11 @@ CREATE TABLE [dbo].[JobType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+<<<<<<< HEAD
 /****** Object:  Table [dbo].[Offer]    Script Date: 08/12/2019 17:09:52 ******/
+=======
+/****** Object:  Table [dbo].[Offer]    Script Date: 07/12/2019 18:05:41 ******/
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,11 +172,11 @@ GO
 CREATE TABLE [dbo].[Offer](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](500) NOT NULL,
-	[Reference] [varchar](500) NULL,
+	[Reference] [varchar](500) NOT NULL,
 	[Description] [varchar](2000) NOT NULL,
 	[Picture] [image] NULL,
 	[PostNumber] [int] NULL,
-	[PublicationStart] [datetime] NULL,
+	[PublicationStart] [datetime] NOT NULL,
 	[ContractStart] [datetime] NULL,
 	[Period] [varchar](500) NULL,
 	[Inspect] [bit] NOT NULL,
@@ -160,7 +189,11 @@ CREATE TABLE [dbo].[Offer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+<<<<<<< HEAD
 /****** Object:  Table [dbo].[Producer]    Script Date: 08/12/2019 17:09:52 ******/
+=======
+/****** Object:  Table [dbo].[Producer]    Script Date: 07/12/2019 18:05:41 ******/
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -171,12 +204,18 @@ CREATE TABLE [dbo].[Producer](
 	[Password] [varchar](50) NOT NULL,
 	[Website] [varchar](500) NULL,
 	[Phone] [varchar](500) NULL,
-	[Fax] [varchar](500) NULL,
+	[Fax] [varchar](500) NOT NULL,
 	[City] [varchar](500) NULL,
 	[Address1] [varchar](500) NULL,
+<<<<<<< HEAD
 	[Address2] [varchar](500) NULL,
 	[Email] [varchar](500) NOT NULL,
 	[CastingCounter] [int] NULL,
+=======
+	[Address2] [varchar](500) NOT NULL,
+	[Email] [varchar](500) NULL,
+	[CastingCounter] [int] NOT NULL,
+>>>>>>> parent of 6949421... Merge branch 'Matheo'
 	[IdCastingPack] [bigint] NOT NULL,
  CONSTRAINT [PK_Producer] PRIMARY KEY CLUSTERED 
 (

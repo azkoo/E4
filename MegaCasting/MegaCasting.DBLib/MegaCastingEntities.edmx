@@ -47,7 +47,7 @@
           <Property Name="PostNumber" Type="int" />
           <Property Name="PublicationStart" Type="datetime" />
           <Property Name="ContractStart" Type="datetime" />
-          <Property Name="Period" Type="datetime" />
+          <Property Name="Period" Type="varchar" MaxLength="500" />
           <Property Name="Inspect" Type="bit" Nullable="false" />
           <Property Name="IdProducer" Type="bigint" Nullable="false" />
           <Property Name="IdContractType" Type="bigint" Nullable="false" />
@@ -140,6 +140,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MegaCastingModelStoreContainer">
           <EntitySet Name="CastingPack" EntityType="Self.CastingPack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContractType" EntityType="Self.ContractType" Schema="dbo" store:Type="Tables" />
@@ -147,6 +178,7 @@
           <EntitySet Name="JobType" EntityType="Self.JobType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producer" EntityType="Self.Producer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Job_JobType" Association="Self.FK_Job_JobType">
             <End Role="JobType" EntitySet="JobType" />
             <End Role="Job" EntitySet="Job" />
@@ -260,7 +292,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams1" />
-          </EntityContainer>
+        </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -319,7 +351,7 @@
           <Property Name="PostNumber" Type="Int32" />
           <Property Name="PublicationStart" Type="DateTime" Precision="3" />
           <Property Name="ContractStart" Type="DateTime" Precision="3" />
-          <Property Name="Period" Type="DateTime" Precision="3" />
+          <Property Name="Period" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="Inspect" Type="Boolean" Nullable="false" />
           <Property Name="IdProducer" Type="Int64" Nullable="false" />
           <Property Name="IdContractType" Type="Int64" Nullable="false" />
@@ -334,18 +366,18 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Fax" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CastingCounter" Type="Int32" />
           <Property Name="IdCastingPack" Type="Int64" Nullable="false" />
           <NavigationProperty Name="CastingPack" Relationship="MegaCastingModel.FK_Producer_CastingPack" FromRole="Producer" ToRole="CastingPack" />
           <NavigationProperty Name="Offers" Relationship="MegaCastingModel.FK_Offer_Producer" FromRole="Producer" ToRole="Offer" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Producer_CastingPack">
           <End Type="MegaCastingModel.CastingPack" Role="CastingPack" Multiplicity="1" />
@@ -490,6 +522,7 @@
           <EntitySetMapping Name="Producers">
             <EntityTypeMapping TypeName="MegaCastingModel.Producer">
               <MappingFragment StoreEntitySet="Producer">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IdCastingPack" ColumnName="IdCastingPack" />
                 <ScalarProperty Name="CastingCounter" ColumnName="CastingCounter" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -499,7 +532,6 @@
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
