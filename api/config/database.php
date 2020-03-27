@@ -2,10 +2,11 @@
 class Database{
   
     // specify your own database credentials
-    private $host = "DESKTOP-HRSC6EQ\SQLEXPRESS";
-    private $db_name = "MegaCastingBD";
-    private $username = "";
+    private $host = "localhost";
+    private $db_name = "test";
+    private $username = "root";
     private $password = "";
+    private $port = "80";
     public $conn;
   
     // get the database connection
@@ -15,7 +16,7 @@ class Database{
   
         try{
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            $this->conn->exec("set names utf8");
+                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }catch(PDOException $exception){
             echo "Connection error: " . $exception->getMessage();
         }
