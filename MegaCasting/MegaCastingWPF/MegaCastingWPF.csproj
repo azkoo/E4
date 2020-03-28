@@ -76,6 +76,7 @@
     <Compile Include="ViewModels\ViewModelCastingPack.cs" />
     <Compile Include="ViewModels\ViewModelContractType.cs" />
     <Compile Include="ViewModels\ViewModelJob.cs" />
+    <Compile Include="ViewModels\ViewModelJobType.cs" />
     <Compile Include="ViewModels\ViewModelOffer.cs" />
     <Compile Include="ViewModels\ViewModelViewAnnouncer.cs" />
     <Compile Include="Views\ViewAnnouncer.xaml.cs">
@@ -89,6 +90,9 @@
     </Compile>
     <Compile Include="Views\ViewJob.xaml.cs">
       <DependentUpon>ViewJob.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewJobType.xaml.cs">
+      <DependentUpon>ViewJobType.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewMain.xaml.cs">
       <DependentUpon>ViewMain.xaml</DependentUpon>
@@ -121,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewJob.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewJobType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

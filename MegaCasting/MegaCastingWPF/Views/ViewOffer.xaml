@@ -29,7 +29,6 @@
         <TextBlock x:Name="textBlockOffers"  Grid.Column="0" Grid.Row="0" Text="Liste des offres" TextAlignment="Center" FontSize="20" Foreground="WhiteSmoke" HorizontalAlignment="Left"></TextBlock>
         <ListBox x:Name="listBoxOffers" Grid.Row="1" Grid.Column="0"  Foreground="WhiteSmoke" ItemsSource="{Binding Offers, UpdateSourceTrigger=PropertyChanged}"
                  DisplayMemberPath="Name" SelectedItem="{Binding SelectedOffer, UpdateSourceTrigger=PropertyChanged}">
-
         </ListBox>
 
 
@@ -75,39 +74,23 @@
 
             <DatePicker x:Name="DatePickerContractStart" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,6" Width="300"/>
             <TextBox x:Name="PeriodOffer" Grid.Column="2" Grid.Row="7" Text="{Binding SelectedOffer.Period, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
-            <ComboBox x:Name="ComboBoxContractType" Grid.Column="2" Grid.Row="8" Foreground="WhiteSmoke" VerticalAlignment="Top">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
-                            <TextBlock Text="{Binding Name}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
 
-            </ComboBox>
-            <ComboBox x:Name="ComboBoxJob" Grid.Column="2" Grid.Row="9" Foreground="WhiteSmoke" VerticalAlignment="Top">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
-                            <TextBlock Text="{Binding Name}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+            <ComboBox  x:Name="ComboBoxAnnouncer" Grid.Column="2" Grid.Row="10" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" 
+                 ItemsSource="{Binding Producers, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedItem="{Binding SelectedProducer, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedValue="{Binding SelectedOffer.Producer, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+            <ComboBox  x:Name="ComboBoxJob" Grid.Column="2" Grid.Row="9" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" 
+                 ItemsSource="{Binding Jobs, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedItem="{Binding SelectedJob, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedValue="{Binding SelectedOffer.Job, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+            <ComboBox  x:Name="ComboBoxContractType" Grid.Column="2" Grid.Row="8" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" 
+                 ItemsSource="{Binding ContractTypes, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedItem="{Binding SelectedContractType, UpdateSourceTrigger=PropertyChanged}"
+                 SelectedValue="{Binding SelectedOffer.ContractType, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+            <Button Grid.Column="3" Grid.Row="4" Content="Parcourir" x:Name="BTN_ParcourirImage" Click="BTN_ParcourirImage_Click" Background="LightGray" 
+                    Foreground="Black"/>
 
-            </ComboBox>
-            <ComboBox x:Name="ComboBoxAnnouncer" Grid.Column="2" Grid.Row="10" Foreground="WhiteSmoke" VerticalAlignment="Top">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
-                            <TextBlock Text="{Binding Name}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-
-            </ComboBox>
+            <Image Name="TB_DiagResult"  Grid.Column="2" Grid.Row="4" Source="{Binding SelectedOffer.Picture}"/>
 
 
 

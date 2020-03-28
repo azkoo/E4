@@ -110,6 +110,12 @@ namespace MegaCastingWPF
             this.dockPanelMain.Children.Add(viewCastingPack);
         }
 
+        private void ButtonJobType_Click(object sender, RoutedEventArgs e)
+        {
+            this.CleanPanel();
+            ViewJobType viewJobType = new ViewJobType();
+            this.dockPanelMain.Children.Add(viewJobType);
+        }
         #endregion
 
         #region Methods
@@ -123,5 +129,7 @@ namespace MegaCastingWPF
         }
 
         #endregion
+
+
     }
 }

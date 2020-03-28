@@ -20,7 +20,15 @@ namespace MegaCastingWPF.ViewModels
         private ObservableCollection<Producer> _Producers;
 
         private Producer _SelectedProducer;
-    
+
+        private ObservableCollection<CastingPack> _castingPacks;
+
+        private CastingPack _selectedCastingPack;
+
+
+
+
+
         #endregion
 
         #region Properties
@@ -44,6 +52,17 @@ namespace MegaCastingWPF.ViewModels
 
         }
 
+        public ObservableCollection<CastingPack> CastingPacks
+        {
+            get { return _castingPacks; }
+            set { _castingPacks = value; }
+        }
+
+        public CastingPack SelectedCastingPack
+        {
+            get { return _selectedCastingPack; }
+            set { _selectedCastingPack = value; }
+        }
         #endregion
 
         #region Constructor
@@ -54,6 +73,7 @@ namespace MegaCastingWPF.ViewModels
         public ViewModelViewAnnouncer()
         {
             Producers = new ObservableCollection<Producer>(this.Entities.Producers);
+            CastingPacks = new ObservableCollection<CastingPack>(this.Entities.CastingPacks);
         }
 
         #endregion
@@ -78,6 +98,9 @@ namespace MegaCastingWPF.ViewModels
             producer.Fax = FaxProducer.Text;
             producer.City = CityProducer.Text;
             producer.Address1 = AddressProducer.Text;
+
+            producer.IdCastingPack = SelectedCastingPack.Id;
+            Producers.Where(Producers => Producers.Id.Equals(SelectedProducer.Id));
             //producer.IdCastingPack = SubscribeProducer.GetValue(Id);
             this.Entities.Producers.Add(producer);
             // On ajoute le producteur à la BDD
