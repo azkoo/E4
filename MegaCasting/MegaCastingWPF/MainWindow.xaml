@@ -11,7 +11,6 @@
         Width="1200"
         MinHeight="450"
         MinWidth="800"
-        ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -21,7 +20,7 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" Icon="Logotrens.png" Cursor="Arrow"   
+        FontFamily="{DynamicResource MaterialDesignFont}" Icon="Logotrens.png" Cursor="Arrow" WindowStyle="None" Opacity="0.995"   
         >
 
     <Grid>
@@ -34,19 +33,29 @@
             <ColumnDefinition Width="200"></ColumnDefinition>
             <ColumnDefinition Width="285*"></ColumnDefinition>
             <ColumnDefinition Width="140*"/>
-            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
         <!--Entête-->
-        <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="#565975">
+        <Grid Grid.Row="0" Grid.ColumnSpan="6" Background="#565975">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            
+            
+            
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Background="{x:Null}">
                 <!--Bouton home-->
                 <Button x:Name="buttonHome" Click="ButtonHome_Click" Foreground="White" BorderBrush="Transparent" Height="60" Width="200" Background="{x:Null}">
                     <Image Height="50" Source="MegaCastingLogoMiniature.png" Stretch="Fill" Width="50"/>
                 </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Background="{x:Null}">
-                <Button x:Name="buttonExit" Width="25" Height="25" HorizontalAlignment="Right" Click="ButtonExit_Click" Foreground="White"
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Background="{x:Null}" Grid.Column="3">
+                <Button  x:Name="buttonExit" Width="25" Height="25" HorizontalAlignment="Right" Click="ButtonExit_Click" Foreground="White"
                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Background="{x:Null}">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -57,6 +66,31 @@
                     </Grid>
                 </Button>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Background="{x:Null}" Grid.Column="1">
+                <Button  x:Name="MaximiseBTN" Width="25" Height="25" HorizontalAlignment="Right" Click="MaximiseBTN_Click" Foreground="White"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="WindowMinimize" Grid.Column="0" Foreground="Gainsboro"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Background="{x:Null}" Grid.Column="2">
+                <Button  x:Name="ReduceBTN" Width="25" Height="25" HorizontalAlignment="Right" Click="ReduceBTN_Click" Foreground="White"
+                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Background="{x:Null}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="ImageFilterNone" Grid.Column="0" Foreground="Gainsboro"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+
         </Grid>
         <StackPanel Grid.Row="1" Grid.Column="0" Background="#565975" Orientation="Horizontal" >
             <Grid>
@@ -148,7 +182,7 @@
             <MenuItem x:Name="menuItemContractType" Header="Gestion des annonceurs" />
         </Menu>-->
         <!-- Entête-->
-        <DockPanel x:Name="dockPanelMain" Grid.Row="1" Grid.Column="1" Background="#1f2454" Grid.ColumnSpan="3">
+        <DockPanel x:Name="dockPanelMain" Grid.Row="1" Grid.Column="1" Background="#1f2454" Grid.ColumnSpan="6">
             <views:ViewMain HorizontalAlignment="Center" />
         </DockPanel>
     </Grid>

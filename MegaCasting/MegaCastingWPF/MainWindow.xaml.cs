@@ -116,6 +116,23 @@ namespace MegaCastingWPF
             ViewJobType viewJobType = new ViewJobType();
             this.dockPanelMain.Children.Add(viewJobType);
         }
+
+        private void ReduceBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void MaximiseBTN_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
         #endregion
 
         #region Methods
@@ -127,6 +144,7 @@ namespace MegaCastingWPF
         {
             this.dockPanelMain.Children.Clear();
         }
+
 
         #endregion
 
