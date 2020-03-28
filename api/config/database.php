@@ -3,7 +3,7 @@ class Database{
   
     // specify your own database credentials
     private $host = "localhost";
-    private $db_name = "test";
+    private $db_name = "megacastingbd";
     private $username = "root";
     private $password = "";
     private $port = "80";
