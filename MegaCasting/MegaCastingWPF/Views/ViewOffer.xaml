@@ -72,21 +72,21 @@
             <TextBox x:Name="DescriptionOffer" Grid.Column="2" Grid.Row="3" Text="{Binding SelectedOffer.Description, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
             <TextBox x:Name="PostNumberOffer" Grid.Column="2" Grid.Row="5" Text="{Binding SelectedOffer.PostNumber, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
 
-            <DatePicker x:Name="DatePickerContractStart" Grid.Column="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,6" Width="300"/>
+            <DatePicker x:Name="DatePickerContractStart" Grid.Column="2" Grid.Row="6" Foreground="WhiteSmoke" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,6" Width="300" SelectedDate="{Binding SelectedOffer.ContractStart, Mode=TwoWay}"/>
             <TextBox x:Name="PeriodOffer" Grid.Column="2" Grid.Row="7" Text="{Binding SelectedOffer.Period, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
 
-            <ComboBox  x:Name="ComboBoxAnnouncer" Grid.Column="2" Grid.Row="10" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" 
+            <ComboBox  x:Name="ComboBoxAnnouncer" Grid.Column="2" Grid.Row="10" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" Foreground="WhiteSmoke"
                  ItemsSource="{Binding Producers, UpdateSourceTrigger=PropertyChanged}"
                  SelectedItem="{Binding SelectedProducer, UpdateSourceTrigger=PropertyChanged}"
                  SelectedValue="{Binding SelectedOffer.Producer, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
-            <ComboBox  x:Name="ComboBoxJob" Grid.Column="2" Grid.Row="9" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" 
+            <ComboBox  x:Name="ComboBoxJob" Grid.Column="2" Grid.Row="9" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" Foreground="WhiteSmoke"
                  ItemsSource="{Binding Jobs, UpdateSourceTrigger=PropertyChanged}"
                  SelectedItem="{Binding SelectedJob, UpdateSourceTrigger=PropertyChanged}"
                  SelectedValue="{Binding SelectedOffer.Job, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
             <ComboBox  x:Name="ComboBoxContractType" Grid.Column="2" Grid.Row="8" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" 
                  ItemsSource="{Binding ContractTypes, UpdateSourceTrigger=PropertyChanged}"
                  SelectedItem="{Binding SelectedContractType, UpdateSourceTrigger=PropertyChanged}"
-                 SelectedValue="{Binding SelectedOffer.ContractType, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+                 SelectedValue="{Binding SelectedOffer.ContractType, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="WhiteSmoke"/>
             <Button Grid.Column="3" Grid.Row="4" Content="Parcourir" x:Name="BTN_ParcourirImage" Click="BTN_ParcourirImage_Click" Background="LightGray" 
                     Foreground="Black"/>
 

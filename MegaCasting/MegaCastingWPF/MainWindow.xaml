@@ -13,6 +13,7 @@
         MinWidth="800"
         WindowStartupLocation="CenterScreen"
         
+        
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -23,7 +24,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}" Icon="Logotrens.png" Cursor="Arrow" WindowStyle="None" Opacity="0.995"   
         >
 
-    <Grid>
+    <Grid Background="#565975"> 
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -37,7 +38,7 @@
         </Grid.ColumnDefinitions>
 
         <!--Entête-->
-        <Grid Grid.Row="0" Grid.ColumnSpan="6" Background="#565975">
+        <Grid Grid.Row="0" Grid.ColumnSpan="6" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="50"/>
