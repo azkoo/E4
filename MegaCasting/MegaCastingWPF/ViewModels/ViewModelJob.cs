@@ -21,6 +21,10 @@ namespace MegaCastingWPF.ViewModels
 
         private Job _SelectedJob;
 
+        private ObservableCollection<JobType> _jobTypes;
+
+        private JobType _selectedJobType;
+
         #endregion
 
         #region Properties
@@ -44,6 +48,18 @@ namespace MegaCastingWPF.ViewModels
 
         }
 
+        public ObservableCollection<JobType> JobTypes
+        {
+            get { return _jobTypes; }
+            set { _jobTypes = value; }
+        }
+
+
+        public JobType SelectedJobType
+        {
+            get { return _selectedJobType; }
+            set { _selectedJobType = value; }
+        }
         #endregion
 
         #region Constructor
@@ -54,6 +70,7 @@ namespace MegaCastingWPF.ViewModels
         public ViewModelJob()
         {
             Jobs = new ObservableCollection<Job>(this.Entities.Jobs);
+            JobTypes = new ObservableCollection<JobType>(this.Entities.JobTypes);
         }
 
         #endregion
@@ -70,6 +87,8 @@ namespace MegaCastingWPF.ViewModels
             Job job = new Job();
             // On attribue le texte contenu dans la textbox
             job.Name = textBox.Text;
+            job.IdJobType = SelectedJobType.Id;
+            Jobs.Where(Jobs => Jobs.Id.Equals(SelectedJob.Id));
             this.Entities.Jobs.Add(job);
             // On ajoute le métier à la BDD
             this.Jobs.Add(job);

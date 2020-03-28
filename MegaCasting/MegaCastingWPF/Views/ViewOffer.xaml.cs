@@ -1,6 +1,8 @@
 ﻿using MegaCastingWPF.ViewModels;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +43,7 @@ namespace MegaCastingWPF.Views
             if (result == MessageBoxResult.Yes)
             {
                 // On ajoute l'offre en BDD
-                ((ViewModelOffer)this.DataContext).AddOffer(NameOffer, ReferenceOffer, DescriptionOffer, PeriodOffer);
+                ((ViewModelOffer)this.DataContext).AddOffer(NameOffer, ReferenceOffer, DescriptionOffer, PeriodOffer, PostNumberOffer, DatePickerContractStart, TB_DiagResult);
                 MessageBox.Show("L'offre " + NameOffer.Text + " a bien été ajouté");
             }
             else
@@ -94,6 +96,13 @@ namespace MegaCastingWPF.Views
             }
         }
 
+        private void BTN_ParcourirImage_Click(object sender, RoutedEventArgs e)
+        {
+           ((ViewModelOffer)this.DataContext).AfficherFileName(TB_DiagResult);
+
+        }
         #endregion
+
+
     }
 }

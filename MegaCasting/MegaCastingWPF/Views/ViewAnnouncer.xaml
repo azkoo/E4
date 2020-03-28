@@ -74,10 +74,10 @@
             <TextBox x:Name="FaxProducer" Grid.Column="2" Grid.Row="6" Text="{Binding SelectedProducer.Fax, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
             <TextBox x:Name="CityProducer" Grid.Column="2" Grid.Row="7" Text="{Binding SelectedProducer.City, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
             <TextBox x:Name="AddressProducer" Grid.Column="2" Grid.Row="8" Text="{Binding SelectedProducer.Address1, UpdateSourceTrigger=PropertyChanged}" Foreground="WhiteSmoke" VerticalAlignment="Center"/>
-            <ComboBox  x:Name="comboboxCastingPack" Grid.Column="2" Grid.Row="9" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Nom" 
+            <ComboBox  x:Name="comboboxCastingPack" Grid.Column="2" Grid.Row="9" IsEditable="True" IsReadOnly="True" DisplayMemberPath="Name" 
                  ItemsSource="{Binding CastingPacks, UpdateSourceTrigger=PropertyChanged}"
                  SelectedItem="{Binding SelectedCastingPack, UpdateSourceTrigger=PropertyChanged}"
-                       SelectedValue="{Binding SelectedProducer.CastingPack, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+                 SelectedValue="{Binding SelectedProducer.CastingPack, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
 
 
         </Grid>
