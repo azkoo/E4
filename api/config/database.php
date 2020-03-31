@@ -1,27 +1,27 @@
 <?php
-class Database{
-  
-    // specify your own database credentials
-    private $host = "localhost";
-    private $db_name = "megacastingbd";
-    private $username = "root";
-    private $password = "";
-    private $port = "80";
-    public $conn;
-  
-    // get the database connection
-    public function getConnection(){
-  
-        $this->conn = null;
-  
-        try{
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }catch(PDOException $exception){
-            echo "Connection error: " . $exception->getMessage();
-        }
-  
-        return $this->conn;
-    }
+
+
+
+function getConnection(){
+
+     $serverName = "DESKTOP-HRSC6EQ\\SQLEXPRESS"; //serverName\instanceName
+     $connectionInfo = array( "Database"=>"MegaCastingBD", "UID"=>"sa", "PWD"=>"Sql2017");
+     $conn = sqlsrv_connect( $serverName, $connectionInfo);
+
+     if( $conn ) {
+          echo "Connexion établie.<br />";
+          
+     }else{
+          echo "La connexion n'a pu être établie.<br />";
+          die( print_r( sqlsrv_errors(), true));
+     }
+
+     return $conn;
+
 }
+/*
+
+C:\Users\Azkoo\AppData\Local\Temp --> pilote dl
+
+*/
 ?>

@@ -6,21 +6,19 @@ class Offer{
     private $table = "offer";
 
     //Attribute
-    private $Identifier
-    private $Name
-    private $Reference
-    private $IdentifierJob
-    private $IdentifierContractType
-    private $PublishDateTime
-    private $Duration
-    private $StartContractDate
-    private $PostCount
-    private $JobDescription
-    private $ProfilDescription
-    private $Street
-    private $City
-    private $ZipCode    
-    private $IdentifierProducer
+    public $Identifier;
+    public $Name;
+    public $Reference;
+    public $Description;
+    public $Picture;
+    public $PostNumber;
+    public $PublicationStart;
+    public $ContractStart;
+    public $Period;
+    public $Inspect;
+    public $IdProducer;
+    public $IdContactType;
+    public $IdJob;  
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -45,6 +43,22 @@ class Offer{
 
 
 
+/*
+{
+	Name":"Jean",
+    Reference":"Ref", 
+    Description":"Description", 
+    Picture":"http://example.com/dir1/xyz123.png", 
+    PostNumber":"1", 
+    PublicationStart":"30/03/2020", 
+    ContractStart":"30/03/2020", 
+    Period":"2 months", 
+    Inspect":"yes", 
+    IdProducer":"1", 
+    IdContactType":"1", 
+    IdJob":"1"
 
+	}
+*/
 
 ?>
