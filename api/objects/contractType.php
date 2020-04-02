@@ -10,7 +10,7 @@ class contractType{
     private $table = "ContractType";
 
     //Attribute
-    public $Identifier;
+    public $Id;
     public $Name;
     
 
@@ -20,91 +20,167 @@ class contractType{
     }
 
   
-    function reader() {
+    function ReadContractType($db) {
+        //DB MIS EN PARAMETRE
+        //$db = getConnection();
 
-        $db = getConnection();
-        $contractType = new ContractType($db);
-        $result = new ContractType($db);
+        // contractTypes array
+        $sql = "SELECT * FROM ContractType";
+        $params = array();
+        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+        $stmt = sqlsrv_query( $db, $sql, $params, $options );
 
-        $query = 'SELECT * FROM ContractType';
-        $test = "fail";
-        
-        //ce code ci récupère les données en bdd.
-        if (sqlsrv_query($this->conn, $query)) 
-        {
+        $row_count = sqlsrv_num_rows( $stmt );
 
-            $stmt = sqlsrv_query($this->conn, $query);
-        }
-        else
-        {
-            //si jamais ça échoue affiche "fail"
-            echo $test;
-        }
+        if($row_count>0){
 
-        //TEST DE LECTURE DES DONNES JE BLOQUE CA MARCHE PAS 
-        //(copier coller du read() du tuto adapté au ContractType)
+            // jobTypes array
+            $jobTypes_arr=array();
+            $jobTypes_arr["records"]=array();
 
 
-        // query offers
-
-
-        // ---------------- TO KNOW ----------------
-
-        // Le code précédent fonctionne et trouve le bon nombre d'objets
-        // en base de donnée chez moi. Je n'arrive juste pas à afficher autre chose que 
-        // Ressource id #5 ou Ressource id #6 ça varie (je ne pense pas que ça soit une erreur
-        //juste que ça ne peut pas afficher les données dans un format lisible)
-
-        // le ligne de code commenté en dessous vient du tuto, ce n'est pas  
-        // censé etre NOTRE fct read() mais une fonction php qui lit les données (je n'ai r trouvé dans le manual php par rapport à cette fct).
-        // J'ai donc changé ma fct read() en reader() afin d'utiliser l'autre read() (et ne
-        // pas boucler sur ma fct) mais ça marche pas,      
-        //  avant de changer de nom j'avais des BOUCLES INFINI fait attention
-        // J'utilise le fichier tester.php afin de tester mon reader() mais il y a peut etre plus simple
-        ///// cette ligne //$result = $contractType->read();
-
-
-        $num = $result->rowCount();
-        echo $num;
-
-
-
-        if($num=0){
-
-            // contractTypes array
-            $contractTypes_arr=array();
-            $contractTypes_arr["records"]=array();
-
-
-            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+            while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
                 extract($row);
-                $contractType_item=array(
+                $jobType_item=array(
 
-                    "Id" => $Identifier,
-                    "Name" => $Name
-
+                    "Id" => $Id,
+                    "Name" => $Name 
                 ); 
-                array_push($contractTypes_arr["records"], $contractType_item);
+                array_push($jobTypes_arr["records"], $jobType_item);
             }
 
-            // show contractTypes data in json format
-            echo json_encode($contractTypes_arr);
-        }
-        else{
+            // show jobTypes data in json format
+            echo json_encode($jobTypes_arr);
+        } 
+        else {
 
             // set response code - 404 Not found
             http_response_code(404);
-            
+
             // tell the user no jobTypes found
             echo json_encode(
                 array("message" => "No products found.")
-             );
-        
-        
+            );
         }
     }
 
+    function ReadOneContractType($db, $id){
+
+        // contractTypes array
+        $sql = "SELECT * FROM ContractType WHERE Id = ?";
+        $params = array($id->Id);
+        $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+        $stmt = sqlsrv_query( $db, $sql, $params, $options );
+
+        // jobTypes array
+        $jobTypes_arr=array();
+        $jobTypes_arr["records"]=array();
+
+        while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)){
+            extract($row);
+            $jobType_item=array(
+
+                "Id" => $Id,
+                "Name" => $Name 
+            ); 
+            array_push($jobTypes_arr["records"], $jobType_item);
+        }
+        echo json_encode($jobTypes_arr);
+
+    }
+
+
+
+
+
+    function CreateContractType($db, $contractType){
+
+        $query = "INSERT INTO ContractType(Name) VALUES(?)";
+        $data = json_decode(file_get_contents("php://input") );
+
+
+        if(!empty($data->Name)){
+
+            $contractType->Name = $data->Name;
+            $params = array($data->Name);
+            $stmt = sqlsrv_query( $db, $query, $params );
+        }
+        
+        
+
+        if($stmt){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+        }
+
+
+
+
+
+
+    function UpdateContractType( $db, $id){
+
+        $data = json_decode(file_get_contents("php://input"));
+
+        if (empty($data->Name)) {
+            header("HTTP/1.0 400 Bad Request");
+        }
+
+        else {
+            $query = "UPDATE ContractType SET Name = ? WHERE Id = ?";
+
+            $params = array($data->Name, $id);
+            $stmt = sqlsrv_query($db, $query, $params);            
+            if (sqlsrv_rows_affected($stmt) === 0) {
+                header("HTTP/1.0 400 Bad Request");
+                echo("data didn't update.");
+            }
+            else {
+                header("HTTP/1.0 202 Accepted");
+                http_response_code(200);
+                echo("data updated.");
+            }
+        }
+
+    }
+
+    function DeleteContractType($db){
+        //Get the json input
+        $data = json_decode(file_get_contents("php://input"));
+
+        if (empty($data->Id)) {
+            header("HTTP/1.0 400 Bad Request");
+            echo("data empty");
+        }
+
+        else {
+
+            //Attributes needed for the sql query
+            $query = "DELETE FROM ContractType WHERE Id = " . $data->Id;
+            
+            //sql query
+            $stmt = sqlsrv_query($db, $query);     
+            
+            if (sqlsrv_rows_affected($stmt) === 1) {
+                header("HTTP/1.0 202 Accepted");
+                http_response_code(200);
+                echo("\n data deleted.");
+            }
+            else {                
+                header("HTTP/1.0 400 Bad Request");
+                echo("data didn't delete.");
+            }
+        }
+
+    }
+
 }
+
 /*
 {
 	Name":"Jean",
